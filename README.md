@@ -102,39 +102,103 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
 ### Procedure
-/* write all the steps invloved */
+1.Using nand gates and wires construct sr flip flop.
 
+2.Repeat same steps to construct JK,D,T flipflops.
 
+3.Find Rtl logic and timing diagram for all flipflops.
+
+4.End the program.
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: Adhithya MR
+RegisterNumber: 212222240002 
 
-
-
-
-
-
+SR FLIP FLOP:
+```
+module SR(S,R,clk,Q,Qbar);
+input S,R,clk;
+output Q,Qbar;
+wire X,Y;
+nand (X,S,clk);
+nand (Y,R,clk);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
+```
+JK FLIP FLOP:
+```
+module JK(J,K,clk,Q,Qbar);
+input J,K,clk;
+output Q,Qbar;
+wire X,Y;
+nand (X,J,clk,Qbar);
+nand (Y,K,clk,Q);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
+```
+D FLIP FLOP:
+```
+module DF(D,clk,Q,Qbar);
+input D,clk;
+output Q,Qbar;
+assign Dbar=~D;
+wire X,Y;
+nand (X,D,clk);
+nand (Y,Dbar,clk);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
+```
+T FLIP FLOP:
+```
+module TF(T,clk,Q,Qbar);
+input T,clk;
+output Q,Qbar;
+wire S,R;
+nand (S,T,clk,Qbar);
+nand (R,T,clk,Q);
+nand (Q,S,Qbar);
+nand (Qbar,R,Q);
+endmodule
+```
 ### RTL LOGIC FOR FLIPFLOPS 
 
+SR FLIP FLOP:
 
+![image](https://github.com/AdhithyaMR/Experiment--05-Implementation-of-flipflops-using-verilog/assets/118834761/e021ab13-9954-457e-9390-ce8f1d87fe43)
 
+JK FLIP FLOP:
 
+![image](https://github.com/AdhithyaMR/Experiment--05-Implementation-of-flipflops-using-verilog/assets/118834761/983a666c-7784-40b3-98f2-cbfcd176eece)
 
+D FLIP FLOP:
 
+![image](https://github.com/AdhithyaMR/Experiment--05-Implementation-of-flipflops-using-verilog/assets/118834761/5c4392e1-5d92-4849-999d-c9d96b79f7d0)
 
+T FLIP FLOP:
 
+![image](https://github.com/AdhithyaMR/Experiment--05-Implementation-of-flipflops-using-verilog/assets/118834761/7b314f39-b1b3-4fb4-b2cf-88870efb2e42)
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
+SR FLIP FLOP:
 
+![image](https://github.com/AdhithyaMR/Experiment--05-Implementation-of-flipflops-using-verilog/assets/118834761/f26d4cf7-6a7a-45a9-904b-9e6afadb1036)
 
+JK FLIP FLOP:
 
+![image](https://github.com/AdhithyaMR/Experiment--05-Implementation-of-flipflops-using-verilog/assets/118834761/ef583ef3-a4be-4690-9e5f-b8fb7185b1d1)
 
+D FLIP FLOP:
 
+![image](https://github.com/AdhithyaMR/Experiment--05-Implementation-of-flipflops-using-verilog/assets/118834761/a8d5e66a-da66-4f14-abc0-6b2f91e1bdfe)
 
+T FLIP-FLOP:
 
+![image](https://github.com/AdhithyaMR/Experiment--05-Implementation-of-flipflops-using-verilog/assets/118834761/66a9f7cd-b068-4938-a4b0-620cc6f8a701)
 
 ### RESULTS 
+Thus, the program for flipflops is implemented and its functional table is successfully verified in quartus using Verilog programming.
